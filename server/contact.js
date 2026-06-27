@@ -2,20 +2,18 @@ require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const brevo = require("@getbrevo/brevo");
 
 let app = express();
 const PORT = process.env.PORT || 3000;
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.APP_PASSWORD,
-    },
-});
+// brevo routing 
+const apiInstance = new brevo.TransactionalEmailsApi();
+
+apiInstance.setApiKey(
+    brevo.TransactionalEmailsApiApiKeys.apiKey,
+    process.env.BREVO_API_KEY
+);
 
 // middleware 
 app.use(express.urlencoded({ extended: true }));
@@ -31,32 +29,44 @@ app.get("/", (req, res) => {
 
 // form-handle post 
 app.post("/contact", async (req, res) => {
-
     try {
-
         const { name, email, phone, message } = req.body;
 
-        await transporter.sendMail({
-            from: process.env.EMAIL, // sender address
-            to: process.env.EMAIL, // list of recipients
+        const sendSmtpEmail = {
+            sender: {
+                name: "EDUSITY Contact Form",
+                email: process.env.SENDER_EMAIL,
+            },
 
-            // design 
+            to: [
+                {
+                    email: process.env.SENDER_EMAIL,
+                    name: "Deepanshu",
+                },
+            ],
 
-            subject: "New Contact Form Added", // subject line
+            subject: "📩 New Contact Form Submission",
 
-            html: `
-            <h2>New Contact Message INBOX!</h2>
+            htmlContent: `
+        <h2>New Contact Form Message</h2>
 
-            <p>NAME: ${name}</p>
-            <p>Email: ${email}</p>
-            <p>Phone: ${phone}</p>
-            <p>message: ${message}</p>
-            `
-        });
+        <p><strong>Name:</strong> ${name}</p>
+
+        <p><strong>Email:</strong> ${email}</p>
+
+        <p><strong>Phone:</strong> ${phone}</p>
+
+        <p><strong>Message:</strong></p>
+
+        <p>${message}</p>
+      `,
+        };
+
+        await apiInstance.sendTransacEmail(sendSmtpEmail);
 
         res.status(200).json({
             success: true,
-            message: "Email Sended Successfully",
+            message: "Email sent successfully",
         });
 
     } catch (error) {
@@ -64,10 +74,11 @@ app.post("/contact", async (req, res) => {
 
         res.status(500).json({
             success: false,
-            message: "Something Went Wrong",
+            message: "Something went wrong while sending email",
+            error: error.message,
         });
-    };
-})
+    }
+});
 
 // PORTS 
 app.listen(PORT, () => {
