@@ -12,17 +12,13 @@ function About() {
 
   return (
     <>
-      <section className="about" id="about">
+      <section className="about" id="about" style={{ overflow: "hidden" }}>
         <div
           className="about-left"
           data-aos="fade-right"
           data-aos-duration="1000"
         >
-          <img
-            src={aboutImg}
-            alt="About Edusity"
-            className="about-img"
-          />
+          <img src={aboutImg} alt="About Edusity" className="about-img" />
 
           <PlayCircleIcon
             className="play-icon"
@@ -37,52 +33,35 @@ function About() {
           data-aos-duration="1000"
           data-aos-delay="300"
         >
-          <p className="about-subtitle">
-            ABOUT UNIVERSITY
-          </p>
+          <p className="about-subtitle">ABOUT UNIVERSITY</p>
 
-          <h2>
-            Nurturing Tomorrow's Leaders Today
-          </h2>
+          <h2>Nurturing Tomorrow's Leaders Today</h2>
 
           <p>
-            We provide a supportive learning
-            environment that encourages curiosity,
-            creativity, and critical thinking.
+            We provide a supportive learning environment that encourages
+            curiosity, creativity, and critical thinking.
           </p>
 
           <p>
-            Our experienced faculty and modern
-            facilities ensure students receive a
-            world-class education and practical
-            exposure.
+            Our experienced faculty and modern facilities ensure students
+            receive a world-class education and practical exposure.
           </p>
 
           <p>
-            Through academic excellence and
-            innovation, we prepare students for
-            successful careers and meaningful
-            contributions to society.
+            Through academic excellence and innovation, we prepare students for
+            successful careers and meaningful contributions to society.
           </p>
         </div>
       </section>
 
       {showVideo && (
-        <div
-          className="video-container"
-          onClick={() => setShowVideo(false)}
-        >
+        <div className="video-container" onClick={() => setShowVideo(false)}>
           <div
             className="video-modal"
-            onClick={(event) =>
-              event.stopPropagation()
-            }
+            onClick={(event) => event.stopPropagation()}
           >
             <video controls autoPlay>
-              <source
-                src={aboutVideo}
-                type="video/mp4"
-              />
+              <source src={aboutVideo} type="video/mp4" />
             </video>
           </div>
         </div>

@@ -1,1 +1,1 @@
-export const API_URL = "https://edusity-backend-sfzk.onrender.com/";
+export const API_URL = "https://edusity-backend-sfzk.onrender.com";

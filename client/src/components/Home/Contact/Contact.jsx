@@ -44,15 +44,11 @@ function Contact() {
     setLoading(true);
 
     try {
-      await axios.post(
-        `${API_URL}/contact`,
-        formData
-      );
+      await axios.post(`${API_URL}/contact`, formData);
 
       setStatus({
         type: "success",
-        message:
-          "✅ Your message has been sent successfully.",
+        message: "✅ Your message has been sent successfully.",
       });
 
       setFormData({
@@ -66,8 +62,7 @@ function Contact() {
 
       setStatus({
         type: "error",
-        message:
-          "❌ Something went wrong. Please try again.",
+        message: "❌ Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -78,6 +73,7 @@ function Contact() {
     <section
       className="contact-section"
       id="contact"
+      style={{ overflow: "hidden" }}
     >
       <Grid container spacing={4}>
         {/* LEFT SECTION */}
@@ -90,41 +86,27 @@ function Contact() {
           >
             <h3>
               Send us a message
-              <img
-                src={messageIcon}
-                alt="Message Icon"
-              />
+              <img src={messageIcon} alt="Message Icon" />
             </h3>
 
             <p>
-              Feel free to reach out through our
-              contact form or use the details
-              below. We would love to hear from
-              you.
+              Feel free to reach out through our contact form or use the details
+              below. We would love to hear from you.
             </p>
 
             <div className="icon-section">
               <h4>
-                <img
-                  src={mailIcon}
-                  alt="Mail Icon"
-                />
+                <img src={mailIcon} alt="Mail Icon" />
                 Deepanshuarya80@gmail.com
               </h4>
 
               <h4>
-                <img
-                  src={phoneIcon}
-                  alt="Phone Icon"
-                />
+                <img src={phoneIcon} alt="Phone Icon" />
                 +91 9999536528
               </h4>
 
               <h4>
-                <img
-                  src={locationIcon}
-                  alt="Location Icon"
-                />
+                <img src={locationIcon} alt="Location Icon" />
                 West Delhi, India
               </h4>
             </div>
@@ -181,27 +163,13 @@ function Contact() {
             />
 
             {status.message && (
-              <p
-                className={`form-status ${status.type}`}
-              >
-                {status.message}
-              </p>
+              <p className={`form-status ${status.type}`}>{status.message}</p>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-            >
-              {loading
-                ? "Sending..."
-                : "Submit Now"}
+            <button type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Submit Now"}
 
-              {!loading && (
-                <img
-                  src={whiteArrow}
-                  alt="Arrow Icon"
-                />
-              )}
+              {!loading && <img src={whiteArrow} alt="Arrow Icon" />}
             </button>
           </form>
         </Grid>
