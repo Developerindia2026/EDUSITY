@@ -11,8 +11,8 @@ function Openings() {
       <Grid container spacing={8} className="opening-grid">
 
         {/* Job Card 1 */}
-        <Grid size={{ xs: 12, md: 6 }} data-aos="fade-right">
-          <div className="job-card">
+        <Grid size={{ xs: 12, md: 6 }} style={{overflow: "hidden"}}>
+          <div className="job-card" data-aos="fade-right" >
 
             <div className="job-title">
               <h3>Senior Developer</h3>
@@ -38,8 +38,8 @@ function Openings() {
         </Grid>
 
         {/* Job Card 2 */}
-        <Grid size={{ xs: 12, md: 6 }} data-aos="fade-left">
-          <div className="job-card">
+        <Grid size={{ xs: 12, md: 6 }} style={{overflow: "hidden"}}>
+          <div className="job-card" data-aos="fade-left">
 
             <div className="job-title">
               <h3>Academic Counselor</h3>
@@ -66,8 +66,8 @@ function Openings() {
 
         
         {/* Job Card 1 */}
-        <Grid size={{ xs: 12, md: 6 }} data-aos="fade-right">
-          <div className="job-card">
+        <Grid size={{ xs: 12, md: 6 }} style={{overflow: "hidden"}}>
+          <div className="job-card" data-aos="fade-right">
 
             <div className="job-title">
               <h3>Digital Marketing Executive</h3>
@@ -93,8 +93,8 @@ function Openings() {
         </Grid>
 
         {/* Job Card 2 */}
-        <Grid size={{ xs: 12, md: 6 }} data-aos="fade-left">
-          <div className="job-card">
+        <Grid size={{ xs: 12, md: 6 }} style={{overflow: "hidden"}}>
+          <div className="job-card" data-aos="fade-left">
 
             <div className="job-title">
               <h3>Mathematics Faculty</h3>
