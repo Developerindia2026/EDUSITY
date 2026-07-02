@@ -67,9 +67,9 @@ function Navbar() {
 
         {/* Desktop Contact Button */}
         <div className="contact-btn">
-          <a href="#contact">
-            <button>Contact Us</button>
-          </a>
+          <Link to="/career/admin/dashboard">
+            <button>Admin Panel</button>
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}

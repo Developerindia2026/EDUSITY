@@ -78,9 +78,10 @@ body {
   background: white;
   color: #212ea0;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s ease;
+  text-transform: capitalize;
 }
 
 .contact-btn button:hover {

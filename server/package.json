@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "EDUSITY Backend Server",
-  "main": "contact.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node contact.js",
-    "dev": "nodemon contact.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
